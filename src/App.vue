@@ -1,19 +1,37 @@
 <script setup>
-import Navbar from './components/Navbar.vue';
 import { AppState } from './AppState.js';
 
+let num = 80
+
+let str = "Jeremy"
 
 </script>
 
 <template>
   <header>
-    <Navbar />
+    <h1 class="text-warning text-center my-3">
+      <i>Game Night</i>
+    </h1>
   </header>
-  <main>
+  <main class="text-warning">
+    <div class="container-fluid">
+      <section class="row">
+        <div class="col-12">
+          <div class="text-center fs-3">
+            Name is {{ str }}
+          </div>
+        </div>
+      </section>
+      <section class="row">
+        <div class="col-12">
+          <div class="text-center">
+            <button class="btn btn-warning fs-3">Add Player</button>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
-  <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer>
+
 </template>
 
 <style lang="scss">
