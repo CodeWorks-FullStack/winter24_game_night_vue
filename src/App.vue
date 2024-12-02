@@ -1,7 +1,8 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { AppState } from './AppState.js';
 import { playersService } from './services/PlayersService.js';
+import PlayerForm from './components/PlayerForm.vue';
 
 const players = AppState.players
 
@@ -14,7 +15,6 @@ const totalScores = computed(() => {
   return score
 })
 
-const editablePlayerName = ref('')
 
 function increaseScore(player) {
   playersService.increaseScore(player)
@@ -23,12 +23,6 @@ function increaseScore(player) {
 function decreaseScore(player) {
   playersService.decreaseScore(player)
 }
-
-function addPlayer() {
-  playersService.addPlayer(editablePlayerName.value)
-  editablePlayerName.value = ''
-}
-
 </script>
 
 <template>
@@ -81,19 +75,7 @@ function addPlayer() {
       </section>
       <section class="row justify-content-center">
         <div class="col-md-4">
-          <div>
-            <!-- NOTE .prevent calls event.preventDefault() -->
-            <form @submit.prevent="addPlayer()">
-              <div class="mb-3">
-                <label for="player-name" class="form-label">Player Name</label>
-                <input v-model="editablePlayerName" type="text" class="form-control" id="player-name"
-                  placeholder="Player Name..." minlength="2" maxlength="20" required>
-              </div>
-              <div class="text-center">
-                <button class="btn btn-warning fs-3" type="submit">Add Player</button>
-              </div>
-            </form>
-          </div>
+          <PlayerForm />
         </div>
       </section>
     </div>
