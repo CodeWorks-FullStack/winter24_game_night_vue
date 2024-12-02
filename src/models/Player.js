@@ -2,6 +2,11 @@ export class Player {
   constructor(data) {
     this.name = data.name
     this.score = 0
-    this.imgUrl = data.imgUrl
+  }
+
+  get emoji() {
+    const emojis = ['🧙', '👮', '💂‍♀️', '🥷', '👩‍🌾', '👩‍🍳', '👨‍🏭', '👩‍🎤', '👨‍🎨']
+    const randomIndex = Math.floor(Math.random() * emojis.length)
+    return emojis[randomIndex]
   }
 }

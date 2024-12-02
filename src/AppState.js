@@ -9,13 +9,17 @@ export const AppState = reactive({
   account: null,
   players: [
     new Player({
-      name: 'Jeremy',
-      imgUrl: 'https://images.unsplash.com/photo-1505245748910-cb2bb4abb3ba?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8b2xkJTIwbWFufGVufDB8fDB8fHww'
+      name: 'Jeremy'
     }),
     new Player({
-      name: 'Mick',
-      imgUrl: 'https://plus.unsplash.com/premium_photo-1661840399584-fa80b6a856ac?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y3JvY3N8ZW58MHx8MHx8fDA%3D'
-    })
+      name: 'Mick'
+    }),
+    new Player({
+      name: 'Jake'
+    }),
+    new Player({
+      name: 'Ryan'
+    }),
   ]
 })
 

@@ -1,7 +1,12 @@
 <script setup>
 import { AppState } from './AppState.js';
 
+const players = AppState.players
 
+function increaseScore() {
+  console.log('Clicked the button!');
+
+}
 
 </script>
 
@@ -14,25 +19,29 @@ import { AppState } from './AppState.js';
   <main class="text-warning">
     <div class="container-fluid">
       <section class="row">
-        <div class="col-md-4">
-          <div class="d-flex justify-content-between align-items-center">
+        <div v-for="player in players" :key="player.name" class="col-md-4 mb-3">
+          <div class="d-flex justify-content-between align-items-center border border-1 border-warning p-3">
             <div>
-              <img
-                src="https://images.unsplash.com/photo-1731813416620-2e3fcf288125?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y3JvY3N8ZW58MHx8MHx8fDA%3D"
-                alt="Picture of Mick">
-              <span class="ms-3">Mick</span>
+              <span class="fs-1">
+                {{ player.emoji }}
+              </span>
+              <span class="ms-3">
+                {{ player.name }}
+              </span>
             </div>
             <div>
               <button class="btn btn-outline-warning">
                 <i class="mdi mdi-minus"></i>
               </button>
               <span class="mx-3">0</span>
-              <button class="btn btn-outline-warning">
+              <!-- NOTE @click is the vue version of the onclick handler -->
+              <button @click="increaseScore()" class="btn btn-outline-warning">
                 <i class="mdi mdi-plus"></i>
               </button>
             </div>
           </div>
         </div>
+
       </section>
       <section class="row">
         <div class="col-12">
