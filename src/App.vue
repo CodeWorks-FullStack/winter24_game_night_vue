@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { AppState } from './AppState.js';
 import { playersService } from './services/PlayersService.js';
 
@@ -14,12 +14,19 @@ const totalScores = computed(() => {
   return score
 })
 
+const editablePlayerName = ref('')
+
 function increaseScore(player) {
   playersService.increaseScore(player)
 }
 
 function decreaseScore(player) {
   playersService.decreaseScore(player)
+}
+
+function addPlayer() {
+  playersService.addPlayer(editablePlayerName.value)
+  editablePlayerName.value = ''
 }
 
 </script>
@@ -32,11 +39,6 @@ function decreaseScore(player) {
   </header>
   <main class="text-warning">
     <div class="container-fluid">
-      <section class="row">
-        <div class="col-12">
-          <h2 class="text-center">Total Sores: {{ totalScores }}</h2>
-        </div>
-      </section>
       <section class="row">
         <div v-for="player in players" :key="player.name" class="col-md-4 mb-3">
           <div class="d-flex justify-content-between align-items-center border border-1 border-warning p-3">
@@ -65,10 +67,32 @@ function decreaseScore(player) {
         </div>
 
       </section>
-      <section class="row">
+      <!-- NOTE only show this HTML if some kind of condition -->
+      <section v-if="totalScores > 0" class="row">
         <div class="col-12">
-          <div class="text-center">
-            <button class="btn btn-warning fs-3">Add Player</button>
+          <h2 class="text-center">Total Scores: {{ totalScores }}</h2>
+        </div>
+      </section>
+      <!-- NOTE v-else must be a direct sibling of another v-if statement -->
+      <section v-else class="row">
+        <div class="col-12">
+          <h2 class="text-center">No one has scored yet!</h2>
+        </div>
+      </section>
+      <section class="row justify-content-center">
+        <div class="col-md-4">
+          <div>
+            <!-- NOTE .prevent calls event.preventDefault() -->
+            <form @submit.prevent="addPlayer()">
+              <div class="mb-3">
+                <label for="player-name" class="form-label">Player Name</label>
+                <input v-model="editablePlayerName" type="text" class="form-control" id="player-name"
+                  placeholder="Player Name..." minlength="2" maxlength="20" required>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-warning fs-3" type="submit">Add Player</button>
+              </div>
+            </form>
           </div>
         </div>
       </section>

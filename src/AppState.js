@@ -8,18 +8,10 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} user info from the database*/
   account: null,
   players: [
-    new Player({
-      name: 'Jeremy'
-    }),
-    new Player({
-      name: 'Mick'
-    }),
-    new Player({
-      name: 'Jake'
-    }),
-    new Player({
-      name: 'Ryan'
-    }),
+    new Player('Jeremy'),
+    new Player('Mick'),
+    new Player('Jake'),
+    new Player('Ryan'),
   ]
 })
 

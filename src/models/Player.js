@@ -1,6 +1,6 @@
 export class Player {
-  constructor(data) {
-    this.name = data.name
+  constructor(name) {
+    this.name = name
     this.score = 0
     this.emoji = this.randomEmoji
   }
