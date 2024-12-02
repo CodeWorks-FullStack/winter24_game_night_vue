@@ -29,7 +29,8 @@ function decreaseScore(player) {
               <span class="fs-1">
                 {{ player.emoji }}
               </span>
-              <span class="ms-3">
+              <!-- NOTE adds the returned value from our color getter as a class  -->
+              <span class="ms-3" :class="player.color">
                 {{ player.name }}
               </span>
             </div>
