@@ -75,6 +75,7 @@ function decreaseScore(player) {
       </section>
       <section class="row justify-content-center">
         <div class="col-md-4">
+          <!-- NOTE all html/css/js from this component is injected here! -->
           <PlayerForm />
         </div>
       </section>
