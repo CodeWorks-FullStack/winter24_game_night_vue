@@ -1,8 +1,18 @@
 <script setup>
+import { computed } from 'vue';
 import { AppState } from './AppState.js';
 import { playersService } from './services/PlayersService.js';
 
 const players = AppState.players
+
+const totalScores = computed(() => {
+  let score = 0
+  for (let i = 0; i < players.length; i++) {
+    const player = players[i]
+    score += player.score
+  }
+  return score
+})
 
 function increaseScore(player) {
   playersService.increaseScore(player)
@@ -22,6 +32,11 @@ function decreaseScore(player) {
   </header>
   <main class="text-warning">
     <div class="container-fluid">
+      <section class="row">
+        <div class="col-12">
+          <h2 class="text-center">Total Sores: {{ totalScores }}</h2>
+        </div>
+      </section>
       <section class="row">
         <div v-for="player in players" :key="player.name" class="col-md-4 mb-3">
           <div class="d-flex justify-content-between align-items-center border border-1 border-warning p-3">
